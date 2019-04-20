@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.MainController">
+<VBox prefHeight="800.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.MainController">
    <children>
       <HBox alignment="CENTER" prefHeight="40.0" prefWidth="200.0" spacing="220.0">
          <children>
@@ -116,5 +116,29 @@
             </VBox>
          </children>
       </HBox>
+       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="200.0" spacing="5.0">
+           <children>
+               <TableView fx:id="tblCarsSorted" prefHeight="200.0" prefWidth="200.0">
+                   <columns>
+                       <TableColumn fx:id="colCarId" prefWidth="75.0" style="-fx-alignment: CENTER;" text="Car ID">
+                            <cellValueFactory>
+                                <PropertyValueFactory property="id"/>
+                            </cellValueFactory>
+                       </TableColumn>
+                       <TableColumn fx:id="colCarModel" prefWidth="75.0" style="-fx-alignment: CENTER;" text="Car Model">
+                            <cellValueFactory>
+                                <PropertyValueFactory property="model"/>
+                            </cellValueFactory>
+                       </TableColumn>
+                       <TableColumn fx:id="colCarRentDays" prefWidth="75.0" style="-fx-alignment: CENTER;" text="Rent Days">
+                            <cellValueFactory>
+                                <PropertyValueFactory property="days"/>
+                            </cellValueFactory>
+                       </TableColumn>
+                   </columns>
+               </TableView>
+               <Button fx:id="btnSort" onAction="#btnSortCars" text="Sort" />
+           </children>
+       </VBox>
    </children>
 </VBox>

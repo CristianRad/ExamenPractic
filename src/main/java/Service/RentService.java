@@ -11,6 +11,12 @@ public class RentService {
     private IRepository<Rent> rentRepository;
     private IRepository<Car> carRepository;
 
+    /**
+     * Instantiates a service for rents.
+     * @param rentRepository is the rents repository used.
+     * @param carRepository is the car repository used.
+     */
+
     public RentService(IRepository<Rent> rentRepository, IRepository<Car> carRepository) {
         this.rentRepository = rentRepository;
         this.carRepository = carRepository;
@@ -22,6 +28,7 @@ public class RentService {
      * @param carId is the ID of the rented car.
      * @param days is the length of the rent in days.
      * @param kilometresDone is the number of kilometres done during the rent.
+     * @throws RentServiceException is the rent already exists or the ID of the rented car does not exist.
      */
 
     public void addRent(String id, String carId, int days, int kilometresDone) {

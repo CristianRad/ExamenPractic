@@ -22,7 +22,7 @@ public class Main extends Application {
         IRepository<Car> carRepository = new FileRepository<>("cars", Car.class);
         IRepository<Rent> rentRepository = new FileRepository<>("rents", Rent.class);
 
-        CarService carService = new CarService(carRepository);
+        CarService carService = new CarService(carRepository, rentRepository);
         RentService rentService = new RentService(rentRepository, carRepository);
 
         MainController mainController = fxmlLoader.getController();
@@ -45,7 +45,7 @@ public class Main extends Application {
         rentService.addRent("8","4",7,660);
 */
         primaryStage.setTitle("Car Rent Manager");
-        primaryStage.setScene(new Scene(root, 600, 600));
+        primaryStage.setScene(new Scene(root, 600, 1000));
         primaryStage.show();
     }
 

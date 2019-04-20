@@ -61,8 +61,9 @@ public class FileRepository<T extends Entity> implements IRepository<T> {
     }
 
     /**
-     * Adds an entity.
+     * Adds an entity to storage.
      * @param entity is the entity to be added based on its ID.
+     * @throws RepositoryException if the entity already exists in storage.
      */
 
     @Override

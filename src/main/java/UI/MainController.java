@@ -3,6 +3,7 @@ package UI;
 import Domain.Car;
 import Domain.Rent;
 import Service.CarService;
+import Service.CarVM;
 import Service.RentService;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -13,6 +14,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+
+import java.util.List;
 
 public class MainController {
     
@@ -42,6 +45,11 @@ public class MainController {
     public TextField txtCarTotalIncome;
     public Button btnCalcKm;
     public Button btnCalcIncome;
+    public TableView tblCarsSorted;
+    public TableColumn colCarId;
+    public TableColumn colCarModel;
+    public TableColumn colCarRentDays;
+    public Button btnSort;
 
     public CarService carService;
     public RentService rentService;
@@ -53,6 +61,7 @@ public class MainController {
 
     private ObservableList<Car> cars = FXCollections.observableArrayList();
     private ObservableList<Rent> rents = FXCollections.observableArrayList();
+    private ObservableList<CarVM> carSort = FXCollections.observableArrayList();
 
     @FXML
     public void initialize() {
@@ -120,6 +129,17 @@ public class MainController {
                 if (rent.getCarId().equals(carId))
                     totalIncome = totalIncome + price * rent.getDays();
             txtCarTotalIncome.setText(totalIncome + "");
+        } catch (RuntimeException error) {
+            Common.showValidationError(error.getMessage());
+        }
+    }
+
+    public void btnSortCars(ActionEvent actionEvent) {
+        try {
+            List<CarVM> sortedCars = carService.getOrderedByNumberOfDays();
+
+            carSort.addAll(sortedCars);
+            tblCarsSorted.setItems(carSort);
         } catch (RuntimeException error) {
             Common.showValidationError(error.getMessage());
         }
