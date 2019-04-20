@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.MainController">
+   <children>
+      <HBox alignment="CENTER" prefHeight="40.0" prefWidth="200.0" spacing="220.0">
+         <children>
+            <Label text="Cars">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font></Label>
+            <Label layoutX="10.0" layoutY="10.0" text="Rents">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font></Label>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="313.0" prefWidth="500.0" spacing="10.0">
+         <children>
+            <TableView fx:id="tblCars" prefHeight="263.0" prefWidth="250.0">
+              <columns>
+                <TableColumn fx:id="carId" prefWidth="25.0" style="-fx-alignment: CENTER;" text="ID">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="id" />
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn fx:id="carModel" prefWidth="90.0" style="-fx-alignment: CENTER;" text="Model">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="model" />
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn fx:id="carInitialKm" prefWidth="75.0" style="-fx-alignment: CENTER;" text="Initial Km">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="initialKm" />
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn fx:id="carPrice" prefWidth="58.0" style="-fx-alignment: CENTER;" text="Price">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="price" />
+                    </cellValueFactory>
+                </TableColumn>
+              </columns>
+            </TableView>
+            <TableView fx:id="tblRents" prefHeight="263.0" prefWidth="250.0">
+              <columns>
+                <TableColumn fx:id="rentId" prefWidth="40.0" style="-fx-alignment: CENTER;" text="ID">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="id" />
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn fx:id="rentCarId" prefWidth="90.0" style="-fx-alignment: CENTER;" text="Car ID">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="carId" />
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn fx:id="rentDays" prefWidth="60.0" style="-fx-alignment: CENTER;" text="Days">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="days" />
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn fx:id="rentKmDone" prefWidth="58.0" style="-fx-alignment: CENTER;" text="Km Done">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="kilometresDone" />
+                    </cellValueFactory>
+                </TableColumn>
+               </columns>
+            </TableView>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="130.0" prefWidth="200.0" spacing="160.0">
+         <children>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <TextField fx:id="txtCarId" promptText="ID" />
+                  <TextField fx:id="txtCarModel" layoutX="10.0" layoutY="10.0" promptText="Model" />
+                  <TextField fx:id="txtCarInitialKm" layoutX="10.0" layoutY="35.0" promptText="Initial Km" />
+                  <TextField fx:id="txtCarPrice" layoutX="10.0" layoutY="60.0" promptText="Price" />
+                  <Button fx:id="btnAddCar" onAction="#btnAddCarClick" text="Add Car" />
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <TextField fx:id="txtRentId" promptText="ID" />
+                  <TextField fx:id="txtRentCarId" layoutX="10.0" layoutY="10.0" promptText="Car ID" />
+                  <TextField fx:id="txtRentDays" layoutX="10.0" layoutY="35.0" promptText="Days" />
+                  <TextField fx:id="txtRentKmDone" layoutX="10.0" layoutY="35.0" promptText="Km Done" />
+                  <Button fx:id="btnAddRent" onAction="#btnAddRentClick" text="Add Rent" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
+</VBox>
