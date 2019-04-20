@@ -34,4 +34,6 @@ public class CarService {
         return carRepository.getAll();
     }
 
+    public IRepository<Car> getCarRepository() { return carRepository; }
+
 }

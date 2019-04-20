@@ -36,6 +36,12 @@ public class MainController {
     public TextField txtRentCarId;
     public TextField txtRentDays;
     public TextField txtRentKmDone;
+    public TextField txtCarIdForKm;
+    public TextField txtCarTotalKm;
+    public TextField txtCarIdForIncome;
+    public TextField txtCarTotalIncome;
+    public Button btnCalcKm;
+    public Button btnCalcIncome;
 
     public CarService carService;
     public RentService rentService;
@@ -88,4 +94,21 @@ public class MainController {
         }
     }
 
+    public void btnCalculateKmClick(ActionEvent actionEvent) {
+        try {
+            String carId = txtCarIdForKm.getText();
+            Car car = carService.getCarRepository().findById(carId);
+            int totalKm = car.getInitialKm();
+
+            for (Rent rent : rentService.getAllRents())
+                if (rent.getCarId().equals(carId))
+                    totalKm += rent.getKilometresDone();
+            txtCarTotalKm.setText(totalKm + "");
+        } catch (RuntimeException error) {
+            Common.showValidationError(error.getMessage());
+        }
+    }
+
+    public void btnCalculateIncomeClick(ActionEvent actionEvent) {
+    }
 }

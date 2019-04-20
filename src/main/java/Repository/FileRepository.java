@@ -60,6 +60,11 @@ public class FileRepository<T extends Entity> implements IRepository<T> {
         }
     }
 
+    /**
+     * Adds an entity.
+     * @param entity is the entity to be added based on its ID.
+     */
+
     @Override
     public void insert(T entity) {
         loadFromFile();
@@ -68,6 +73,11 @@ public class FileRepository<T extends Entity> implements IRepository<T> {
         storage.put(entity.getId(), entity);
         writeToFile();
     }
+
+    /**
+     * Gets a list of all entities.
+     * @return the list with all the entities.
+     */
 
     @Override
     public List<T> getAll() {
@@ -79,6 +89,18 @@ public class FileRepository<T extends Entity> implements IRepository<T> {
     public Map<String, T> getStorage() {
         loadFromFile();
         return storage;
+    }
+
+    /**
+     * Gets an entity based on its ID.
+     * @param id is the ID of the entity to find.
+     * @return the entity with the given ID.
+     */
+
+    @Override
+    public T findById(String id) {
+        loadFromFile();
+        return storage.get(id);
     }
 
 }
