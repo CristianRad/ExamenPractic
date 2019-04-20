@@ -110,5 +110,19 @@ public class MainController {
     }
 
     public void btnCalculateIncomeClick(ActionEvent actionEvent) {
+        try {
+            String carId = txtCarIdForIncome.getText();
+            Car car = carService.getCarRepository().findById(carId);
+            double price = car.getPrice();
+            double totalIncome = 0;
+
+            for (Rent rent : rentService.getAllRents())
+                if (rent.getCarId().equals(carId))
+                    totalIncome = totalIncome + price * rent.getDays();
+            txtCarTotalIncome.setText(totalIncome + "");
+        } catch (RuntimeException error) {
+            Common.showValidationError(error.getMessage());
+        }
     }
+
 }

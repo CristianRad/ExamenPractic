@@ -103,14 +103,14 @@
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                <children>
                   <TextField fx:id="txtCarIdForKm" promptText="Enter Car ID" />
-                  <TextField fx:id="txtCarTotalKm" layoutX="10.0" layoutY="10.0" />
+                  <TextField fx:id="txtCarTotalKm" layoutX="10.0" layoutY="10.0" promptText="Total Km" />
                   <Button fx:id="btnCalcKm" onAction="#btnCalculateKmClick" text="Calculate Km" />
                </children>
             </VBox>
             <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0">
                <children>
                   <TextField fx:id="txtCarIdForIncome" promptText="Enter Car ID" />
-                  <TextField fx:id="txtCarTotalIncome" layoutX="10.0" layoutY="10.0" />
+                  <TextField fx:id="txtCarTotalIncome" layoutX="10.0" layoutY="10.0" promptText="Total Income" />
                   <Button fx:id="btnCalcIncome" onAction="#btnCalculateIncomeClick" text="Calc. Income" />
                </children>
             </VBox>
